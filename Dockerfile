@@ -16,7 +16,9 @@ RUN apt-get update && \
     rm -Rf /var/lib/apt/lists/* && \
     rm -Rf /var/cache/* && \
     a2enmod rewrite && \
-    rm /etc/apache2/sites-enabled/000-default
+    rm /etc/apache2/sites-enabled/000-default && \
+    # To resolve issue "Could not reliably determine the server's fully qualified domain name..."
+    echo "ServerName localhost" >> /etc/apache2/ports.conf
 COPY 000-project.conf /etc/apache2/sites-enabled/
 
 # Download an build PHP 5.2.17
