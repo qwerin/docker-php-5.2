@@ -311,11 +311,9 @@ RUN mkdir /php && \
 COPY php.ini /etc/php/apache2-php5.2/
 COPY php.ini /etc/php/cli-php5.2/
 
-# Enable mailing via ssmtp
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ssmtp && \
-	apt-get clean && \
-	rm -r /var/lib/apt/lists/*
+RUN \
+    apt-get clean              && \
+    rm -r /var/lib/apt/lists/*
 
 EXPOSE 80
 
