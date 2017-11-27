@@ -311,10 +311,6 @@ RUN mkdir /php && \
 COPY php.ini /etc/php/apache2-php5.2/
 COPY php.ini /etc/php/cli-php5.2/
 
-RUN \
-    apt-get clean              && \
-    rm -r /var/lib/apt/lists/*
-
 EXPOSE 80
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
