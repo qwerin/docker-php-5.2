@@ -17,6 +17,8 @@ RUN apt-get update && \
     rm -Rf /var/cache/* && \
     a2enmod rewrite && \
     rm /etc/apache2/sites-enabled/000-default && \
+    # To support file written on mounted volumes
+    usermod -u 1000 -s /bin/false www-data && groupmod -g 1000 www-data && \
     # To resolve issue "Could not reliably determine the server's fully qualified domain name..."
     echo "ServerName localhost" >> /etc/apache2/ports.conf
 COPY 000-project.conf /etc/apache2/sites-enabled/
