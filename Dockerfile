@@ -52,9 +52,9 @@ RUN mkdir /php && \
         libxmu-headers libxmu6 libxpm-dev libxpm4 libxslt1-dev libxt-dev libxt6 linux-libc-dev \
         m4 make mlock mysql-common openssl patch pkg-config uuid-dev wget \
         x11-common x11proto-core-dev x11proto-input-dev x11proto-kb-dev \
-        x11proto-xext-dev xorg-sgml-doctools xtrans-dev zlib1g-dev \
-    && \
-    wget http://museum.php.net/php5/php-5.2.17.tar.bz2 && \
+        x11proto-xext-dev xorg-sgml-doctools xtrans-dev zlib1g-dev
+
+RUN wget http://museum.php.net/php5/php-5.2.17.tar.bz2 && \
     tar xfj php-5.2.17.tar.bz2 && \
     ln -s /usr/lib/x86_64-linux-gnu/libjpeg.* /usr/lib/ && \
     ln -s /usr/lib/x86_64-linux-gnu/libpng.* /usr/lib/ && \
@@ -63,7 +63,7 @@ RUN mkdir /php && \
     cd php-5.2.17; \
     wget -c -t 3 -O ./debian_patches_disable_SSLv2_for_openssl_1_0_0.patch https://bugs.php.net/patch-display.php\?bug_id\=54736\&patch\=debian_patches_disable_SSLv2_for_openssl_1_0_0.patch\&revision=1305414559\&download\=1 && \
     patch -p1 -b < debian_patches_disable_SSLv2_for_openssl_1_0_0.patch && \
-    
+
     # Build apache module
     ./configure \
         --bindir=/usr/bin \
@@ -165,7 +165,7 @@ RUN mkdir /php && \
     && \
     make && \
     make install && \
-    
+
     # Build cli
     ./configure \
         --bindir=/usr/bin \
@@ -266,16 +266,16 @@ RUN mkdir /php && \
     && \
     make clean && \
     make && \
-    make install && \
+    make install
 
     # Add extensions
-    pecl install Fileinfo && \
-    pecl install memcache && \
+RUN pecl install Fileinfo && \
+    pecl install memcache-2.2.7 && \
     cd /php && \
-    wget http://downloads.zend.com/optimizer/3.3.3/ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz && \
-    tar xzf ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz && \
+    wget http://downloads.zend.com/optimizer/3.3.9/ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz && \
+    tar xzf ZendOptimizer-3.3.9-linux-glibc23-x86_64.tar.gz && \
     mkdir /usr/lib/php5.2/modules && \
-    cp ZendOptimizer-3.3.3-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so /usr/lib/php5.2/modules/ && \
+    cp ZendOptimizer-3.3.9-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so /usr/lib/php5.2/modules/ && \
 
     # Clean up
     rm -Rf /php && \
