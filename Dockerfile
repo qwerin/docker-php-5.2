@@ -49,7 +49,7 @@ RUN mkdir /php && \
         libt1-dev libtasn1-3-dev libtimedate-perl libtinfo-dev libx11-6 libx11-data \
         libx11-dev libxau-dev libxau6 libxaw7 libxaw7-dev libxcb1 libxcb1-dev \
         libxdmcp-dev libxdmcp6 libxext-dev libxext6 libxml2 libxml2-dev libxmu-dev \
-        libxmu-headers libxmu6 libxpm-dev libxpm4 libxt-dev libxt6 linux-libc-dev \
+        libxmu-headers libxmu6 libxpm-dev libxpm4 libxslt1-dev libxt-dev libxt6 linux-libc-dev \
         m4 make mlock mysql-common openssl patch pkg-config uuid-dev wget \
         x11-common x11proto-core-dev x11proto-input-dev x11proto-kb-dev \
         x11proto-xext-dev xorg-sgml-doctools xtrans-dev zlib1g-dev \
@@ -122,7 +122,7 @@ RUN mkdir /php && \
         --disable-xmlreader \
         --disable-xmlwriter \
         --with-xmlrpc \
-        --without-xsl \
+        --with-xsl \
         --enable-zip \
         --with-zlib \
         --disable-debug \
