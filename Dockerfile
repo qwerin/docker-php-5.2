@@ -110,7 +110,7 @@ RUN wget http://museum.php.net/php5/php-5.2.17.tar.bz2 && \
         --with-pspell \
         --without-recode \
         --disable-shmop \
-        --without-snmp \
+        --with-snmp \
         --enable-soap \
         --enable-sockets \
         --without-sybase-ct \
@@ -212,7 +212,7 @@ RUN wget http://museum.php.net/php5/php-5.2.17.tar.bz2 && \
         --with-pspell \
         --without-recode \
         --disable-shmop \
-        --without-snmp \
+        --with-snmp \
         --enable-soap \
         --enable-sockets \
         --without-sybase-ct \
