@@ -1,5 +1,7 @@
 FROM ubuntu:12.04
 
+COPY sources.list /etc/apt/sources.list
+
 # Install apache
 RUN apt-get update && \
     RUNLEVEL=1 apt-get install -y --no-install-recommends \
@@ -52,7 +54,9 @@ RUN mkdir /php && \
         libxmu-headers libxmu6 libxpm-dev libxpm4 libxslt1-dev libxt-dev libxt6 linux-libc-dev \
         m4 make mlock mysql-common openssl patch pkg-config uuid-dev wget \
         x11-common x11proto-core-dev x11proto-input-dev x11proto-kb-dev \
-        x11proto-xext-dev xorg-sgml-doctools xtrans-dev zlib1g-dev
+        x11proto-xext-dev xorg-sgml-doctools xtrans-dev zlib1g-dev libwww-perl \
+        libconfig-inifiles-perl libdbi-perl libmail-sender-perl libclass-dbi-mysql-perl ca-certificates curl
+
 
 RUN wget http://museum.php.net/php5/php-5.2.17.tar.bz2 && \
     tar xfj php-5.2.17.tar.bz2 && \
@@ -303,7 +307,7 @@ RUN pecl install Fileinfo && \
         libx11-dev libxau-dev libxaw7 libxaw7-dev libxcb1-dev \
         libxdmcp-dev libxext-dev libxext6 libxml2-dev libxmu-dev \
         libxmu-headers libxmu6 libxpm-dev libxpm4 libxt-dev libxt6 linux-libc-dev \
-        m4 make patch pkg-config uuid-dev wget \
+        m4 make patch pkg-config uuid-dev \
         x11-common x11proto-core-dev x11proto-input-dev x11proto-kb-dev \
         x11proto-xext-dev xorg-sgml-doctools xtrans-dev zlib1g-dev \
     && \
