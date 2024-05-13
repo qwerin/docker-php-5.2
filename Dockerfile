@@ -55,7 +55,8 @@ RUN mkdir /php && \
         m4 make mlock mysql-common openssl patch pkg-config uuid-dev wget \
         x11-common x11proto-core-dev x11proto-input-dev x11proto-kb-dev \
         x11proto-xext-dev xorg-sgml-doctools xtrans-dev zlib1g-dev libwww-perl \
-        libconfig-inifiles-perl libdbi-perl libmail-sender-perl libclass-dbi-mysql-perl ca-certificates curl
+        libconfig-inifiles-perl libdbi-perl libmail-sender-perl libclass-dbi-mysql-perl ca-certificates curl \
+        supervisor
 
 
 RUN wget http://museum.php.net/php5/php-5.2.17.tar.bz2 && \
@@ -317,6 +318,18 @@ RUN pecl install Fileinfo && \
 COPY php.ini /etc/php/apache2-php5.2/
 COPY php.ini /etc/php/cli-php5.2/
 
+RUN touch /var/log/cron.log
+
 EXPOSE 80
 
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ADD start.sh /start.sh
+ADD foreground.sh /etc/apache2/foreground.sh
+ADD supervisord.conf /etc/supervisord.conf
+
+RUN chmod 755 /start.sh
+RUN chmod 755 /etc/apache2/foreground.sh
+RUN mkdir /var/log/supervisor/ -p
+
+
+
+CMD ["/bin/bash", "/start.sh"]
