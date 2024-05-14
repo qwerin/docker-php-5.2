@@ -291,7 +291,7 @@ RUN pecl install Fileinfo && \
         comerr-dev cpp cpp-4.6 dpkg-dev g++ g++-4.6 gcc gcc-4.6 krb5-multidev \
         libapr1-dev libaprutil1-dev libaspell-dev libbz2-dev \
         libc-client2007e-dev libc-dev-bin libc6-dev \
-        libcurl4-openssl-dev libdpkg-perl libexpat1-dev \
+        libcurl4-openssl-dev libexpat1-dev \
         libfreetype6-dev libgcrypt11-dev libgdbm-dev libgmp10 libgnutls-dev \
         libgnutls-openssl27 libgnutlsxx27 libgomp1 libgpg-error-dev \
         libgssrpc4 libice-dev libice6 libidn11-dev \
@@ -304,7 +304,7 @@ RUN pecl install Fileinfo && \
         libpq-dev libpq5 libpspell-dev libpthread-stubs0 libpthread-stubs0-dev \
         libquadmath0 libreadline-dev libreadline6-dev librtmp-dev \
         libsm-dev libsm6 libsqlite3-dev libssl-dev libstdc++6-4.6-dev \
-        libt1-dev libtasn1-3-dev libtimedate-perl libtinfo-dev \
+        libt1-dev libtasn1-3-dev libtinfo-dev \
         libx11-dev libxau-dev libxaw7 libxaw7-dev libxcb1-dev \
         libxdmcp-dev libxext-dev libxext6 libxml2-dev libxmu-dev \
         libxmu-headers libxmu6 libxpm-dev libxpm4 libxt-dev libxt6 linux-libc-dev \
